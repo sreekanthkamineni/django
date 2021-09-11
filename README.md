@@ -10,7 +10,7 @@
 
 ### Installation
 1. Download PostgresSql data base and PGADMIN GUI for database.
-2. using defau/t daabse. postgres
+2. using default databse. postgres
 3. update website/settings.py with postgreas password
 
     DATABASES = {
