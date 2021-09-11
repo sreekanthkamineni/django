@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block extrastyles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+    <!-- jQuery UI !-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <p>Enter you website name:</p>
+    <form action="add" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="redirect" value="false" id="redirect">
+        <div class="row">
+            <div class="col">
+                <input type="text" list="URL_name" Placeholder="Search URL.." class="form-control" name="url_for" id="input-website-name">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary mb-2">Search</button>
+            </div>
+        </div>
+   
+            
+        
+        
+        
+         
+
+    </form>
+
+        <datalist id="URL_name">
+
+            {% for results in showURL %}
+                
+                <option value="{{ results.name}}">
+            {% endfor %}
+
+        </datalist>
+
+{% endblock %}
+{% block extrascripts %}
+<script>
+    $(document).ready(function () {
+    $("#input-website-name").autocomplete({
+        source: "{% url 'website_search' %}",
+        minLength: 3,
+        // defining minimum character for search box
+        delay: 200,
+        // we use delay to query from url in miliseconds
+
+        select: afterSelected
+        
+            });
+    });
+
+    // when auto complete is selected we will try to change redirect input value to true
+    function afterSelected(event, ui) {
+        $('#redirect').val(true);
+    }
+</script>
+
+{% endblock %}
+

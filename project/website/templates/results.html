@@ -1,0 +1,22 @@
+
+{% extends 'home.html' %}
+
+{% block content %}
+</div><br>
+    <div style="color: blue">
+            {% if results %}
+
+                {% for k in results %}
+                <table border="0px" width="300px">
+                <tr>            
+                <td><a href='https://www.{{ k }}' target="_blank">{{k}}</a></td>
+                </tr>
+                </table> 
+                {% endfor %}   
+            {% else %}
+                <h4>URL not availbel for : {{ data}}</h4>
+            {% endif %}
+    </div>
+</div>
+
+{% endblock %}

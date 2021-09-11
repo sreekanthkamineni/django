@@ -1,0 +1,12 @@
+*.pyc
+.vscode
+__pycache__
+myvenv
+*.sqlite3
+db.sqlite3
+mydatabase
+env
+env/
+screenshots/
+staticfiles/
+project/website/env/
